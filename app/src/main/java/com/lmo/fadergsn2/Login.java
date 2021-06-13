@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     EditText laetPassword, laetEmail;
-    TextView laBtnReg;
+    TextView laBtnReg,laForgotPass;
     Button laBtnLogin;
     ProgressBar laProgressBar;
 
@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
         laBtnLogin = findViewById(R.id.laBtnLogin);
         laBtnReg = findViewById(R.id.laBtnReg);
         laProgressBar = findViewById(R.id.laProgressBar);
+        laForgotPass = findViewById(R.id.laForgotPass);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -80,5 +81,18 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        laBtnReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Register.class));
+            }
+        });
+
+        laForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ResetPass.class));
+            }
+        });
     }
 }

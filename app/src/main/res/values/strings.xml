@@ -17,4 +17,5 @@
     <string name="loginConfirmation">User successfully logged in</string>
     <string name="someError">Some error occurred</string>
     <string name="registerConfirmation">User successfully created</string>
+    <string name="forgotPassword">Forgot Password?</string>
 </resources>
