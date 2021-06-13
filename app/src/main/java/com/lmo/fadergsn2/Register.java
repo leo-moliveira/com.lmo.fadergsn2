@@ -31,11 +31,11 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         raetFullName = findViewById(R.id.raetFullName);
-        raetEmail = findViewById(R.id.raetEmail);
-        raetPassword = findViewById(R.id.raetPassword);
+        raetEmail = findViewById(R.id.laetEmail);
+        raetPassword = findViewById(R.id.laetPassword);
         raetPasswordConfirm = findViewById(R.id.raetPasswordConfirm);
-        raetBtn = findViewById(R.id.raetBtn);
-        ratvAuth = findViewById(R.id.ratvAuth);
+        raetBtn = findViewById(R.id.laBtnLogin);
+        ratvAuth = findViewById(R.id.laBtnReg);
         raProgressBar = findViewById(R.id.raProgressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -96,7 +96,7 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Register.this,getResources().getString(R.string.loginConfirmation), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,getResources().getString(R.string.registerConfirmation), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             raProgressBar.setVisibility(View.INVISIBLE);

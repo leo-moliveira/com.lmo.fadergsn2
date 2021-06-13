@@ -16,4 +16,5 @@
     <string name="raPassValidation">Password must contain more than</string>
     <string name="loginConfirmation">User successfully logged in</string>
     <string name="someError">Some error occurred</string>
+    <string name="registerConfirmation">User successfully created</string>
 </resources>
