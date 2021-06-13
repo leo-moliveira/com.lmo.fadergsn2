@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Fadergs N2</string>
+    <string name="raSubTitle">Create New Account</string>
+    <string name="raFullName">Full Name</string>
+    <string name="raMail">Email</string>
+    <string name="raPassword">Password</string>
+    <string name="raPasswordConfirm">Password Confirmation</string>
+    <string name="raBtnRegister">Register</string>
+    <string name="raAlRegister">Already have registration? <br />Login Here!</string>
+    <string name="raRequired">is required!</string>
+    <string name="emailCap">Email</string>
+    <string name="passwordCap">Password</string>
+    <string name="passwordConfirmationCap">Password Confirmation</string>
+    <string name="raPassConfError">Password and confirmation must be the same</string>
+    <string name="characters">characters</string>
+    <string name="raPassValidation">Password must contain more than</string>
+    <string name="loginConfirmation">User successfully logged in</string>
+    <string name="someError">Some error occurred</string>
 </resources>

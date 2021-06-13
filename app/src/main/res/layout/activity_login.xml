@@ -7,7 +7,7 @@
     tools:context=".Login">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/raTvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -29,10 +29,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/raTvTitle" />
 
     <EditText
-        android:id="@+id/etRegPassword"
+        android:id="@+id/raetPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -44,11 +44,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegEmail"
+        app:layout_constraintTop_toBottomOf="@+id/raetEmail"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
-        android:id="@+id/etRegEmail"
+        android:id="@+id/raetEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <Button
-        android:id="@+id/btnReg"
+        android:id="@+id/raetBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -74,11 +74,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegPassword"
+        app:layout_constraintTop_toBottomOf="@+id/raetPassword"
         app:layout_constraintVertical_bias="0.13" />
 
     <TextView
-        android:id="@+id/tvAlAuth"
+        android:id="@+id/ratvAuth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -87,6 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReg"
+        app:layout_constraintTop_toBottomOf="@+id/raetBtn"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

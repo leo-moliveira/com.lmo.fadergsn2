@@ -19,10 +19,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
-    EditText etRegFullName,etRegEmail,etRegPassword,etRegPasswordConfirm;
-    Button btnReg;
-    TextView tvAlAuth;
-    ProgressBar pbReg;
+    EditText raetFullName,raetEmail,raetPassword,raetPasswordConfirm;
+    Button raetBtn;
+    TextView ratvAuth;
+    ProgressBar raProgressBar;
 
     FirebaseAuth firebaseAuth;
     @Override
@@ -30,13 +30,13 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etRegFullName = findViewById(R.id.etRegFullName);
-        etRegEmail = findViewById(R.id.etRegEmail);
-        etRegPassword = findViewById(R.id.etRegPassword);
-        etRegPasswordConfirm = findViewById(R.id.etRegPasswordConfirm);
-        btnReg = findViewById(R.id.btnReg);
-        tvAlAuth = findViewById(R.id.tvAlAuth);
-        pbReg = findViewById(R.id.pbReg);
+        raetFullName = findViewById(R.id.raetFullName);
+        raetEmail = findViewById(R.id.raetEmail);
+        raetPassword = findViewById(R.id.raetPassword);
+        raetPasswordConfirm = findViewById(R.id.raetPasswordConfirm);
+        raetBtn = findViewById(R.id.raetBtn);
+        ratvAuth = findViewById(R.id.ratvAuth);
+        raProgressBar = findViewById(R.id.raProgressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -45,33 +45,38 @@ public class Register extends AppCompatActivity {
             finish();
         }
 
-        btnReg.setOnClickListener(new View.OnClickListener() {
+        raetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = etRegEmail.getText().toString().trim();
-                String password = etRegPassword.getText().toString().trim();
-                String confirmPassword = etRegPasswordConfirm.getText().toString().trim();
+                String email = raetEmail.getText().toString().trim();
+                String password = raetPassword.getText().toString().trim();
+                String confirmPassword = raetPasswordConfirm.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    etRegEmail.setError("Email is Required.");
+                    raetEmail.setError(R.string.emailCap + " " + R.string.raRequired);
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    etRegPassword.setError("Password is Required.");
+                    raetPassword.setError(R.string.passwordCap + " " + R.string.raRequired);
+                    return;
+                }
+
+                if(TextUtils.isEmpty(confirmPassword)){
+                    raetPassword.setError(R.string.passwordConfirmationCap + " " + R.string.raRequired);
                     return;
                 }
 
                 if(!password.equals(confirmPassword)){
-                    etRegPasswordConfirm.setError("Password and confirmation, mast be the same");
+                    raetPasswordConfirm.setError(""+R.string.raPassConfError);
                     return;
                 }
 
-                if(password.length() < 4){
-                    etRegPassword.setError("Password Must be >= 4 Characteres");
+                if(password.length() < Config.PASSWORD_LENGTH){
+                    raetPassword.setError(R.string.raPassValidation + Config.PASSWORD_LENGTH + R.string.characters + "");
                     return;
                 }
-                pbReg.setVisibility(View.VISIBLE);
+                raProgressBar.setVisibility(View.VISIBLE);
 
                 /*
                 Register User in FareBase
@@ -81,10 +86,11 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Register.this,"User Created sucessfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,R.string.loginConfirmation, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
-                            Toast.makeText(Register.this,"Same error occurred: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            raProgressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(Register.this,R.string.someError + ": " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

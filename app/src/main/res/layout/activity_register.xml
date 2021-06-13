@@ -7,11 +7,11 @@
     tools:context=".Register">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/raTvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="Fadergs N2"
+        android:text="@string/app_name"
         android:textSize="34sp"
         android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,22 +24,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Create New Account"
+        android:text="@string/raSubTitle"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/raTvTitle" />
 
     <EditText
-        android:id="@+id/etRegFullName"
+        android:id="@+id/raetFullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Full Name"
+        android:hint="@string/raFullName"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,82 +49,83 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/etRegPasswordConfirm"
+        android:id="@+id/raetPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Confirm Password"
+        android:hint="@string/raPasswordConfirm"
         android:inputType="textPersonName|textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegPassword"
+        app:layout_constraintTop_toBottomOf="@+id/raetPassword"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
-        android:id="@+id/etRegPassword"
+        android:id="@+id/raetPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/raPassword"
         android:inputType="textPersonName|textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegEmail"
+        app:layout_constraintTop_toBottomOf="@+id/raetEmail"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
-        android:id="@+id/etRegEmail"
+        android:id="@+id/raetEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/raMail"
         android:inputType="textWebEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegFullName"
+        app:layout_constraintTop_toBottomOf="@+id/raetFullName"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <Button
-        android:id="@+id/btnReg"
+        android:id="@+id/raetBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Register"
+        android:text="@string/raBtnRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegPasswordConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/raetPasswordConfirm"
         app:layout_constraintVertical_bias="0.07999998" />
 
     <TextView
-        android:id="@+id/tvAlAuth"
+        android:id="@+id/ratvAuth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Already Registered ? Login Here"
+        android:text="@string/raAlRegister"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReg"
+        app:layout_constraintTop_toBottomOf="@+id/raetBtn"
         app:layout_constraintVertical_bias="0.229" />
 
     <ProgressBar
-        android:id="@+id/pbReg"
+        android:id="@+id/raProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,6 +135,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlAuth"
+        app:layout_constraintTop_toBottomOf="@+id/ratvAuth"
         app:layout_constraintVertical_bias="0.103" />
 </androidx.constraintlayout.widget.ConstraintLayout>
