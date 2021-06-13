@@ -1,0 +1,2 @@
+rootProject.name = "Fadergs N2"
+include ':app'

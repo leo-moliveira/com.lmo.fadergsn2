@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "432291712903",
+    "project_id": "fadergs-n2",
+    "storage_bucket": "fadergs-n2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432291712903:android:54c7689d191888aed20d22",
+        "android_client_info": {
+          "package_name": "com.lmo.fadergsn2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432291712903-m370u0av08in8vqprmhc99ci35c914l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcy_FOoj1LrLKZRB48bseDb-yFQ2nimM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432291712903-m370u0av08in8vqprmhc99ci35c914l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
