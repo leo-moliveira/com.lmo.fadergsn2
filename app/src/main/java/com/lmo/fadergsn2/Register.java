@@ -53,27 +53,37 @@ public class Register extends AppCompatActivity {
                 String confirmPassword = raetPasswordConfirm.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    raetEmail.setError(R.string.emailCap + " " + R.string.raRequired);
+                    raetEmail.setError(
+                            getResources().getString(R.string.emailCap) + " " + getResources().getString(R.string.raRequired)
+                    );
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    raetPassword.setError(R.string.passwordCap + " " + R.string.raRequired);
+                    raetPassword.setError(
+                            getResources().getString(R.string.passwordCap) + " " + getResources().getString(R.string.raRequired)
+                    );
                     return;
                 }
 
                 if(TextUtils.isEmpty(confirmPassword)){
-                    raetPassword.setError(R.string.passwordConfirmationCap + " " + R.string.raRequired);
+                    raetPassword.setError(
+                            getResources().getString(R.string.passwordConfirmationCap ) + " " + getResources().getString(R.string.raRequired)
+                    );
                     return;
                 }
 
                 if(!password.equals(confirmPassword)){
-                    raetPasswordConfirm.setError(""+R.string.raPassConfError);
+                    raetPasswordConfirm.setError(
+                            getResources().getString(R.string.raPassConfError)
+                    );
                     return;
                 }
 
                 if(password.length() < Config.PASSWORD_LENGTH){
-                    raetPassword.setError(R.string.raPassValidation + Config.PASSWORD_LENGTH + R.string.characters + "");
+                    raetPassword.setError(
+                            getResources().getString(R.string.raPassValidation) + String.valueOf(Config.PASSWORD_LENGTH ) + getResources().getString(R.string.characters)
+                    );
                     return;
                 }
                 raProgressBar.setVisibility(View.VISIBLE);
@@ -86,11 +96,11 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Register.this,R.string.loginConfirmation, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,getResources().getString(R.string.loginConfirmation), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             raProgressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(Register.this,R.string.someError + ": " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,getResources().getString(R.string.someError) + ": " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
