@@ -82,7 +82,7 @@ public class Register extends AppCompatActivity {
 
                 if(password.length() < Config.PASSWORD_LENGTH){
                     raetPassword.setError(
-                            getResources().getString(R.string.raPassValidation) + String.valueOf(Config.PASSWORD_LENGTH ) + getResources().getString(R.string.characters)
+                            getResources().getString(R.string.raPassValidation) + " " + String.valueOf(Config.PASSWORD_LENGTH ) + " " + getResources().getString(R.string.characters)
                     );
                     return;
                 }
@@ -100,7 +100,8 @@ public class Register extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             raProgressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(Register.this,getResources().getString(R.string.someError) + ": " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            String taskMessage = task.getException().getLocalizedMessage();
+                            Toast.makeText(Register.this,getResources().getString(R.string.someError) + ": " + taskMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
