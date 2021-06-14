@@ -7,7 +7,7 @@
     tools:context=".Register">
 
     <TextView
-        android:id="@+id/laTitle"
+        android:id="@+id/rgatvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/latvSubTitle"
+        android:id="@+id/rgatvSubTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -29,10 +29,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/rgatvTitle" />
 
     <EditText
-        android:id="@+id/raetFullName"
+        android:id="@+id/rgaetFullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -45,11 +45,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/latvSubTitle"
+        app:layout_constraintTop_toBottomOf="@+id/rgatvSubTitle"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/raetPasswordConfirm"
+        android:id="@+id/rgaetPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,11 +61,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laetPassword"
+        app:layout_constraintTop_toBottomOf="@+id/rgaetPassword"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
-        android:id="@+id/laetPassword"
+        android:id="@+id/rgaetPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -77,11 +77,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laetEmail"
+        app:layout_constraintTop_toBottomOf="@+id/rgaetEmail"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <EditText
-        android:id="@+id/laetEmail"
+        android:id="@+id/rgaetEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -93,11 +93,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/raetFullName"
+        app:layout_constraintTop_toBottomOf="@+id/rgaetFullName"
         app:layout_constraintVertical_bias="0.060000002" />
 
     <Button
-        android:id="@+id/laBtnLogin"
+        android:id="@+id/rgaBtnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -107,11 +107,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/raetPasswordConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/rgaetPasswordConfirm"
         app:layout_constraintVertical_bias="0.07999998" />
 
     <TextView
-        android:id="@+id/laBtnReg"
+        android:id="@+id/rgaBtnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -121,11 +121,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laBtnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/rgaBtnRegister"
         app:layout_constraintVertical_bias="0.229" />
 
     <ProgressBar
-        android:id="@+id/raProgressBar"
+        android:id="@+id/rgaProgressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,6 +135,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/laBtnReg"
+        app:layout_constraintTop_toBottomOf="@+id/rgaBtnLogin"
         app:layout_constraintVertical_bias="0.103" />
 </androidx.constraintlayout.widget.ConstraintLayout>

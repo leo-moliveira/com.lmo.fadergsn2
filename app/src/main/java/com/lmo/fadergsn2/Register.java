@@ -19,10 +19,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
-    EditText raetFullName,raetEmail,raetPassword,raetPasswordConfirm;
-    Button raetBtn;
-    TextView ratvAuth;
-    ProgressBar raProgressBar;
+    EditText rgaetFullName,rgaetEmail,rgaetPassword,rgaetPasswordConfirm;
+    Button rgaBtnRegister;
+    TextView rgaBtnLogin;
+    ProgressBar rgaProgressBar;
 
     FirebaseAuth firebaseAuth;
     @Override
@@ -30,13 +30,13 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        raetFullName = findViewById(R.id.raetFullName);
-        raetEmail = findViewById(R.id.laetEmail);
-        raetPassword = findViewById(R.id.laetPassword);
-        raetPasswordConfirm = findViewById(R.id.raetPasswordConfirm);
-        raetBtn = findViewById(R.id.laBtnLogin);
-        ratvAuth = findViewById(R.id.laBtnReg);
-        raProgressBar = findViewById(R.id.raProgressBar);
+        rgaetFullName = findViewById(R.id.rgaetFullName);
+        rgaetEmail = findViewById(R.id.rgaetEmail);
+        rgaetPassword = findViewById(R.id.rgaetPassword);
+        rgaetPasswordConfirm = findViewById(R.id.rgaetPasswordConfirm);
+        rgaBtnRegister = findViewById(R.id.rgaBtnRegister);
+        rgaBtnLogin = findViewById(R.id.rgaBtnLogin);
+        rgaProgressBar = findViewById(R.id.rgaProgressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -45,48 +45,48 @@ public class Register extends AppCompatActivity {
             finish();
         }
 
-        raetBtn.setOnClickListener(new View.OnClickListener() {
+        rgaBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = raetEmail.getText().toString().trim();
-                String password = raetPassword.getText().toString().trim();
-                String confirmPassword = raetPasswordConfirm.getText().toString().trim();
+                String email = rgaetEmail.getText().toString().trim();
+                String password = rgaetPassword.getText().toString().trim();
+                String confirmPassword = rgaetPasswordConfirm.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    raetEmail.setError(
+                    rgaetEmail.setError(
                             getResources().getString(R.string.emailCap) + " " + getResources().getString(R.string.raRequired)
                     );
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    raetPassword.setError(
+                    rgaetPassword.setError(
                             getResources().getString(R.string.passwordCap) + " " + getResources().getString(R.string.raRequired)
                     );
                     return;
                 }
 
                 if(TextUtils.isEmpty(confirmPassword)){
-                    raetPassword.setError(
+                    rgaetPassword.setError(
                             getResources().getString(R.string.passwordConfirmationCap ) + " " + getResources().getString(R.string.raRequired)
                     );
                     return;
                 }
 
                 if(!password.equals(confirmPassword)){
-                    raetPasswordConfirm.setError(
+                    rgaetPasswordConfirm.setError(
                             getResources().getString(R.string.raPassConfError)
                     );
                     return;
                 }
 
                 if(password.length() < Config.PASSWORD_LENGTH){
-                    raetPassword.setError(
+                    rgaetPassword.setError(
                             getResources().getString(R.string.raPassValidation) + " " + String.valueOf(Config.PASSWORD_LENGTH ) + " " + getResources().getString(R.string.characters)
                     );
                     return;
                 }
-                raProgressBar.setVisibility(View.VISIBLE);
+                rgaProgressBar.setVisibility(View.VISIBLE);
 
                 /*
                 Register User in FareBase
@@ -99,7 +99,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this,getResources().getString(R.string.registerConfirmation), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
-                            raProgressBar.setVisibility(View.INVISIBLE);
+                            rgaProgressBar.setVisibility(View.INVISIBLE);
                             String taskMessage = task.getException().getLocalizedMessage();
                             Toast.makeText(Register.this,getResources().getString(R.string.someError) + ": " + taskMessage, Toast.LENGTH_SHORT).show();
                         }
@@ -107,7 +107,7 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
-        ratvAuth.setOnClickListener(new View.OnClickListener() {
+        rgaBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),Login.class));
