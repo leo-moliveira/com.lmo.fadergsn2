@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +18,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
     EditText laetPassword, laetEmail;
     TextView laBtnReg,laForgotPass;
     Button laBtnLogin;
     ProgressBar laProgressBar;
+
+    User user;
+    UserFirebase userBase;
 
     FirebaseAuth firebaseAuth;
 
@@ -70,6 +75,10 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Login.this,getResources().getString(R.string.loginConfirmation), Toast.LENGTH_SHORT).show();
+
+                            userBase = new UserFirebase();
+                            user = userBase.findByUserId(firebaseAuth.getUid());
+                           // Log.d("teste", user.getId() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             laProgressBar.setVisibility(View.INVISIBLE);
