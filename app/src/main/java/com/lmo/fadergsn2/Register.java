@@ -24,7 +24,10 @@ public class Register extends AppCompatActivity {
     TextView rgaBtnLogin;
     ProgressBar rgaProgressBar;
 
+    User user;
+    UserFirebase userBase;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +100,9 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,getResources().getString(R.string.registerConfirmation), Toast.LENGTH_SHORT).show();
+                            user = new User(firebaseAuth.getUid(),rgaetFullName.getText().toString().trim(), rgaetEmail.getText().toString().trim());
+                            userBase = new UserFirebase(user);
+                            userBase.save();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             rgaProgressBar.setVisibility(View.INVISIBLE);
