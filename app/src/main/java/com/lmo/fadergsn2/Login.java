@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
 
                             userBase = new UserFirebase();
                             user = userBase.findByUserId(firebaseAuth.getUid());
-                           // Log.d("teste", user.getId() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
+                            //Log.d("teste", user.getId() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             laProgressBar.setVisibility(View.INVISIBLE);
