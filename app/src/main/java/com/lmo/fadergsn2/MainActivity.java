@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                        // .setAction("Action", null).show();
                 NavController navController = Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_content_main);
-                navController.navigate(R.id.nav_archived_list);
+                navController.navigate(R.id.nav_form);
             }
         });
 
