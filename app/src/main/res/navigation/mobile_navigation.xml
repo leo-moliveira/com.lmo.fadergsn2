@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_list"
-        android:name="com.lmo.fadergsn2.ui.list.ListFragment"
-        android:label="@string/menu_list"
-        tools:layout="@layout/fragment_list" />
+        android:id="@+id/nav_archived_list"
+        android:name="com.lmo.fadergsn2.ui.archived_list.ArchivedListFragment"
+        android:label="@string/archived_list"
+        tools:layout="@layout/fragment_archived_list" />
 
     <fragment
         android:id="@+id/nav_slideshow"

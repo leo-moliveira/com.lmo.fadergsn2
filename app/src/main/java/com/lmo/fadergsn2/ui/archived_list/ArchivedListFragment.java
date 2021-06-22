@@ -1,4 +1,4 @@
-package com.lmo.fadergsn2.ui.list;
+package com.lmo.fadergsn2.ui.archived_list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,23 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.lmo.fadergsn2.databinding.FragmentListBinding;
+import com.lmo.fadergsn2.databinding.FragmentArchivedListBinding;
 
-public class ListFragment extends Fragment {
+public class ArchivedListFragment extends Fragment {
 
-    private ListViewModel listViewModel;
-    private FragmentListBinding binding;
+    private ArchivedListViewModel archivedListViewModel;
+    private FragmentArchivedListBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        listViewModel =
-                new ViewModelProvider(this).get(ListViewModel.class);
+        archivedListViewModel =
+                new ViewModelProvider(this).get(ArchivedListViewModel.class);
 
-        binding = FragmentListBinding.inflate(inflater, container, false);
+        binding = FragmentArchivedListBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textGallery;
-        listViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        archivedListViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

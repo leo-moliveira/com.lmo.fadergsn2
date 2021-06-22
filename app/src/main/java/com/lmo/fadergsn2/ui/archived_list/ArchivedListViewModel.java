@@ -1,16 +1,16 @@
-package com.lmo.fadergsn2.ui.list;
+package com.lmo.fadergsn2.ui.archived_list;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ListViewModel extends ViewModel {
+public class ArchivedListViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ListViewModel() {
+    public ArchivedListViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is archived lists");
     }
 
     public LiveData<String> getText() {
