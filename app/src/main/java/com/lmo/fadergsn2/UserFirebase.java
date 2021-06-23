@@ -9,27 +9,30 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserFirebase {
     private static final String COLLECTION = "users";
-    private FirebaseFirestore base;
+    private FirebaseFirestore base = FirebaseFirestore.getInstance();;
+    private CollectionReference collectionRef = base.collection(this.COLLECTION);
     private User user;
 
     public UserFirebase(){}
 
-    public UserFirebase(User Object){
-        this.user = Object;
+    public UserFirebase(User object){
+        this.user = object;
     }
 
     public void save(){
-        base = FirebaseFirestore.getInstance();
         Map<String, Object> user = new HashMap<>();
         user.put("id",this.user.getId());
         user.put("name",this.user.getName());
@@ -50,7 +53,15 @@ public class UserFirebase {
         });
     }
     public User findByUserId(String id){
-        base = FirebaseFirestore.getInstance();
+        readData(new FirestoreCallBack() {
+            @Override
+            public void onCallback(User user) {
+                Instance.getInstance().user = user;
+                Log.d("teste2",user.getClass().getName());
+            }
+        },id);
+
+        /*
         base.collection(this.COLLECTION).whereEqualTo("id",id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -58,15 +69,38 @@ public class UserFirebase {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                user = document.toObject(User.class);
-                                Log.d("teste", user.getClass() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
+                                Instance.getInstance().user = document.toObject(User.class);
+                                user = Instance.getInstance().user;
+
                             }
                         } else {
                             user = null;
                             Log.d("teste", "Error getting documents: ", task.getException());
                         }
                     }
+                });*/
+        return user;
+    }
+
+    public void readData(FirestoreCallBack callBack,String id){
+        collectionRef.whereEqualTo("id",id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                user = document.toObject(User.class);
+                            }
+                            callBack.onCallback(user);
+                        }else{
+
+                        }
+                    }
                 });
-        return this.user;
+    }
+
+    public interface FirestoreCallBack{
+        void onCallback(User user);
     }
 }

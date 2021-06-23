@@ -74,11 +74,12 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Login.this,getResources().getString(R.string.loginConfirmation), Toast.LENGTH_SHORT).show();
 
                             userBase = new UserFirebase();
                             user = userBase.findByUserId(firebaseAuth.getUid());
-                            //Log.d("teste", user.getId() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
+                            //Log.d("teste2", user.getClass() + " => " + user.getId() + " - " + user.getName() + " - " + user.getEmail());
+
+                            Toast.makeText(Login.this,getResources().getString(R.string.loginConfirmation), Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             laProgressBar.setVisibility(View.INVISIBLE);

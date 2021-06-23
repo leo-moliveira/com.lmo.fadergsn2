@@ -103,6 +103,7 @@ public class Register extends AppCompatActivity {
                             user = new User(firebaseAuth.getUid(),rgaetFullName.getText().toString().trim(), rgaetEmail.getText().toString().trim());
                             userBase = new UserFirebase(user);
                             userBase.save();
+                            Instance.getInstance().user = user;
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else{
                             rgaProgressBar.setVisibility(View.INVISIBLE);

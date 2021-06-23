@@ -4,38 +4,51 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.lmo.fadergsn2.Instance;
+import com.lmo.fadergsn2.R;
+import com.lmo.fadergsn2.Task;
+import com.lmo.fadergsn2.TaskFirebase;
 import com.lmo.fadergsn2.databinding.FragmentFromBinding;
 
 
 public class FormFragment extends Fragment {
-
-    private FormViewModel formViewModel;
     private FragmentFromBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        formViewModel =
-                new ViewModelProvider(this).get(FormViewModel.class);
+    private EditText ffetTitle, ffetDesc;
+    private Button ffBtnSend;
 
-        binding = FragmentFromBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
-        final TextView textView = binding.textForm;
-        formViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_from, container, false);
+
+        EditText ffetTitle = (EditText) view.findViewById(R.id.ffetTitle);
+        EditText ffetDesc = (EditText) view.findViewById(R.id.ffetDesc);
+
+        Button ffBtnSend = (Button) view.findViewById(R.id.ffBtnSend);
+
+        ffBtnSend.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View v)
+            {
+                String title,desc;
+                title = ffetTitle.toString().trim();
+                desc = ffetDesc.toString().trim();
+                Task task = new Task(null, Instance.getInstance().user.getId(),title,desc,Boolean.FALSE);
+                TaskFirebase taskFirebase = new TaskFirebase(task);
+
+                taskFirebase.save();
+
             }
         });
-        return root;
+        return view;
     }
 
     @Override
