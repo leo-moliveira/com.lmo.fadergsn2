@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -19,7 +20,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
 import com.lmo.fadergsn2.databinding.ActivityMainBinding;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import io.grpc.Context;
 
@@ -27,13 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    FirebaseAuth firebaseAuth;
+    private TextView navHeaderTitle;
+    private TextView navHeaderSubTitle;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser() == null || Instance.getInstance().user == null){
             startActivity(new Intent(getApplicationContext(),Login.class));
             finish();
@@ -43,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
+
+        navHeaderTitle = findViewById(R.id.nav_header_title);
+        navHeaderSubTitle = findViewById(R.id.nav_header_subtitle);
+
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
     }
 
     @Override
@@ -81,4 +96,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

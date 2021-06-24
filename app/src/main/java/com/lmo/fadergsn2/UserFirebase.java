@@ -53,15 +53,6 @@ public class UserFirebase {
         });
     }
     public User findByUserId(String id){
-        readData(new FirestoreCallBack() {
-            @Override
-            public void onCallback(User user) {
-                Instance.getInstance().user = user;
-                Log.d("teste2",user.getClass().getName());
-            }
-        },id);
-
-        /*
         base.collection(this.COLLECTION).whereEqualTo("id",id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -78,29 +69,8 @@ public class UserFirebase {
                             Log.d("teste", "Error getting documents: ", task.getException());
                         }
                     }
-                });*/
+                });
         return user;
     }
 
-    public void readData(FirestoreCallBack callBack,String id){
-        collectionRef.whereEqualTo("id",id)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                user = document.toObject(User.class);
-                            }
-                            callBack.onCallback(user);
-                        }else{
-
-                        }
-                    }
-                });
-    }
-
-    public interface FirestoreCallBack{
-        void onCallback(User user);
-    }
 }
