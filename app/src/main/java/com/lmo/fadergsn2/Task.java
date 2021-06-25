@@ -2,15 +2,20 @@ package com.lmo.fadergsn2;
 
 import com.google.type.DateTime;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Task {
     private String id;
     private String userId;
     private String title;
     private String desc;
-    private String createdAt;
+    private Date createdAt;
     private boolean archived;
 
-    public Task(String id, String userId, String title, String desc, String createdAt,boolean archived) {
+    public Task(){}
+    public Task(String id, String userId, String title, String desc, Date createdAt,boolean archived) {
         this.id = id;
         this.userId = userId;
         this.title = title;
@@ -35,12 +40,10 @@ public class Task {
         this.id = id;
     }
 
-    public String getCreated() {
-        return createdAt;
-    }
+    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
 
-    public void setCreated(String createdAt) {
-        this.createdAt = createdAt;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
     public String getUserId() {
@@ -66,4 +69,5 @@ public class Task {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
 }

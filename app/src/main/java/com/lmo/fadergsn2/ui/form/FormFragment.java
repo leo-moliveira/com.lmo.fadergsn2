@@ -74,13 +74,14 @@ public class FormFragment extends Fragment {
                 desc = ffetDesc.getText().toString().trim();
 
                 DocumentReference doc = base.collection("tasks").document();
-                String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+                Date date = new Date(System.currentTimeMillis());
+                //String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
                 Map<String,Object> task = new HashMap<>();
                 task.put("id",doc.getId());
                 task.put("userId",userData.getId());
                 task.put("title",title);
                 task.put("desc",desc);
-                task.put("createdAt", timeStamp);
+                task.put("createdAt", date);
                 task.put("archived",Boolean.FALSE);
                 base.collection("tasks").add(task).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override

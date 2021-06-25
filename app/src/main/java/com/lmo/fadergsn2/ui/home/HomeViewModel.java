@@ -8,10 +8,7 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This place for lists");
-    }
+
 
     public LiveData<String> getText() {
         return mText;
