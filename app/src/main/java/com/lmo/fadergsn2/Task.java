@@ -1,17 +1,21 @@
 package com.lmo.fadergsn2;
 
+import com.google.type.DateTime;
+
 public class Task {
     private String id;
     private String userId;
     private String title;
     private String desc;
+    private String createdAt;
     private boolean archived;
 
-    public Task(String id, String userId, String title, String desc, boolean archived) {
+    public Task(String id, String userId, String title, String desc, String createdAt,boolean archived) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.desc = desc;
+        this.createdAt = createdAt;
         this.archived = archived;
     }
 
@@ -29,6 +33,14 @@ public class Task {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCreated() {
+        return createdAt;
+    }
+
+    public void setCreated(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getUserId() {

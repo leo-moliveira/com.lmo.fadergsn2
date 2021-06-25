@@ -45,4 +45,6 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="send">Send</string>
+    <string name="taskCreated">Task created successfully</string>
+    <string name="failedTaskCreate">Failed to create task</string>
 </resources>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+
     <TextView
         android:id="@+id/latvTitle"
         android:layout_width="wrap_content"
@@ -68,6 +69,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="#28A79B"
+        android:elevation="@dimen/cardview_default_radius"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,16 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/laBtnLogin"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ProgressBar
-        android:id="@+id/laProgressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="214dp"
-        android:layout_height="201dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/laForgotPass"
@@ -111,4 +104,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/laBtnReg"
         app:layout_constraintVertical_bias="0.110000014" />
+
+    <ProgressBar
+        android:id="@+id/laProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="214dp"
+        android:layout_height="201dp"
+        android:clickable="false"
+        android:contextClickable="false"
+        android:defaultFocusHighlightEnabled="false"
+        android:elevation="10dp"
+        android:indeterminate="false"
+        android:progressTint="#FFFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -128,8 +128,9 @@
     <ProgressBar
         android:id="@+id/rgaProgressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="222dp"
-        android:layout_height="196dp"
+        android:layout_width="264dp"
+        android:layout_height="243dp"
+        android:elevation="10dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
