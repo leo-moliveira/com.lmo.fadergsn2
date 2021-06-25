@@ -2,7 +2,6 @@ package com.lmo.fadergsn2.ui.form;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +11,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
-import com.google.type.DateTime;
-import com.lmo.fadergsn2.Instance;
-import com.lmo.fadergsn2.MainActivity;
 import com.lmo.fadergsn2.R;
-import com.lmo.fadergsn2.TaskFirebase;
 import com.lmo.fadergsn2.User;
 import com.lmo.fadergsn2.databinding.FragmentFromBinding;
 
@@ -40,7 +31,6 @@ import java.io.InputStreamReader;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class FormFragment extends Fragment {
