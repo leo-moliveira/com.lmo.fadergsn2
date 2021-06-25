@@ -18,10 +18,16 @@
         tools:layout="@layout/fragment_archived_list" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.lmo.fadergsn2.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_subTask"
+        android:name="com.lmo.fadergsn2.ui.subTask.SubTaskFragment"
+        android:label="@string/menu_subTasks"
+        tools:layout="@layout/fragment_sub_task" >
+        <!--
+        <argument
+            android:name="MainTask"
+            app:argType="Object"
+            android:defaultValue="null"/>-->
+    </fragment>
     <fragment
         android:id="@+id/nav_form"
         android:name="com.lmo.fadergsn2.ui.form.FormFragment"

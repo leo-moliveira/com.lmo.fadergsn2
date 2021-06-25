@@ -9,6 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+
 import java.util.List;
 
 public class AdapterTask extends BaseAdapter {
@@ -47,6 +52,7 @@ public class AdapterTask extends BaseAdapter {
             item.tlTitle = convertView.findViewById(R.id.fhtvTaskTitle);
             item.tlDesc = convertView.findViewById(R.id.fhtvTaskDesc);
             item.layout = convertView.findViewById(R.id.layout);
+            item.mainTask = convertView.findViewById(R.id.mainTask);
             convertView.setTag(item);
         }else{
             item = (ItemHelper) convertView.getTag();
@@ -59,11 +65,20 @@ public class AdapterTask extends BaseAdapter {
         }else{
             item.layout.setBackgroundColor(Color.WHITE);
         }
+
+        item.mainTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                NavController navController = Navigation.findNavController(activity,R.id.nav_host_fragment_content_main);
+                navController.navigate(R.id.nav_subTask);
+            }
+        });
         return convertView;
     }
 
     private class ItemHelper{
         TextView tlTitle,tlDesc;
-        LinearLayout layout;
+        LinearLayout layout,mainTask;
     }
 }

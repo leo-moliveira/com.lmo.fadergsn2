@@ -1,17 +1,13 @@
-package com.lmo.fadergsn2.ui.slideshow;
+package com.lmo.fadergsn2.ui.subTask;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class SubTaskViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-
-    public SlideshowViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
-    }
+    
 
     public LiveData<String> getText() {
         return mText;

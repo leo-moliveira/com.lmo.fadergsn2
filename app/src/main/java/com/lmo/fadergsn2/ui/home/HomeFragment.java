@@ -7,18 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.lmo.fadergsn2.AdapterTask;
@@ -31,12 +26,9 @@ import com.lmo.fadergsn2.ui.form.FormFragment;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class HomeFragment extends Fragment {
 
@@ -67,6 +59,7 @@ public class HomeFragment extends Fragment {
         this.userData = FormFragment.getUserData(this.getContext());
         this.firebaseFirestore.collection("tasks")
                 .whereEqualTo("userId",userData.getId())
+                .whereEqualTo("archived",Boolean.FALSE)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -88,22 +81,8 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        /*
-        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                fhtvTaskTitle.setText(view.getResources().getString(R.string.noTasks));
-            }
-        }
-         */
         return view;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
