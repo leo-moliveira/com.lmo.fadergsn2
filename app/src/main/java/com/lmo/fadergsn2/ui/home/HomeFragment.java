@@ -56,30 +56,33 @@ public class HomeFragment extends Fragment {
         fhtvTaskDesc = view.findViewById(R.id.fhtvTaskDesc);
         fmlvMainTasks = view.findViewById(R.id.fmlvMainTasks);
         listOfTasks = new ArrayList<>();
-        this.userData = FormFragment.getUserData(this.getContext());
-        this.firebaseFirestore.collection("tasks")
-                .whereEqualTo("userId",userData.getId())
-                .whereEqualTo("archived",Boolean.FALSE)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull com.google.android.gms.tasks.Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                listOfTasks.add(document.toObject(Task.class));
-                                Collections.sort(listOfTasks, new Comparator<Task>() {
-                                    @Override
-                                    public int compare(Task o1, Task o2) {
-                                        return o1.getCreatedAt().compareTo(o2.getCreatedAt());
-                                    }
-                                });
+
+            this.userData = FormFragment.getUserData(this.getContext());
+        if ( this.userData != null ){
+            this.firebaseFirestore.collection("tasks")
+                    .whereEqualTo("userId",userData.getId())
+                    .whereEqualTo("archived",Boolean.FALSE)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull @NotNull com.google.android.gms.tasks.Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    listOfTasks.add(document.toObject(Task.class));
+                                    Collections.sort(listOfTasks, new Comparator<Task>() {
+                                        @Override
+                                        public int compare(Task o1, Task o2) {
+                                            return o1.getCreatedAt().compareTo(o2.getCreatedAt());
+                                        }
+                                    });
+                                }
+                                loadTasks();
+                            }else{
+                                fhtvTaskTitle.setText(view.getResources().getString(R.string.noTasks));
                             }
-                            loadTasks();
-                        }else{
-                            fhtvTaskTitle.setText(view.getResources().getString(R.string.noTasks));
                         }
-                    }
-                });
+                    });
+        }
 
         return view;
     }
