@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.lmo.fadergsn2.AdapterTask;
 import com.lmo.fadergsn2.R;
 import com.lmo.fadergsn2.Task;
 import com.lmo.fadergsn2.User;
@@ -42,6 +44,8 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private TextView fhtvTaskTitle;
     private TextView fhtvTaskDesc;
+    private AdapterTask adapterTask;
+    private ListView fmlvMainTasks;
 
     private User userData;
 
@@ -58,6 +62,7 @@ public class HomeFragment extends Fragment {
 
         fhtvTaskTitle = view.findViewById(R.id.fhtvTaskTitle);
         fhtvTaskDesc = view.findViewById(R.id.fhtvTaskDesc);
+        fmlvMainTasks = view.findViewById(R.id.fmlvMainTasks);
         listOfTasks = new ArrayList<>();
         this.userData = FormFragment.getUserData(this.getContext());
         this.firebaseFirestore.collection("tasks")
@@ -76,6 +81,7 @@ public class HomeFragment extends Fragment {
                                     }
                                 });
                             }
+                            loadTasks();
                         }else{
                             fhtvTaskTitle.setText(view.getResources().getString(R.string.noTasks));
                         }
@@ -102,5 +108,10 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void loadTasks(){
+        adapterTask = new AdapterTask(this.getContext(),this.listOfTasks);
+        fmlvMainTasks.setAdapter(adapterTask);
     }
 }
