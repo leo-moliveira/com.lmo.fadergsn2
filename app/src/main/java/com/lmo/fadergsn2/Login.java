@@ -94,6 +94,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
                             user.setId(firebaseAuth.getUid());
                             firebaseFirestore.collection("users")
                                     .whereEqualTo("id",user.getId())
