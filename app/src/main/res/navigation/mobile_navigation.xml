@@ -22,12 +22,9 @@
         android:name="com.lmo.fadergsn2.ui.subTask.SubTaskFragment"
         android:label="@string/menu_subTasks"
         tools:layout="@layout/fragment_sub_task" >
-        <!--
-        <argument
-            android:name="MainTask"
-            app:argType="Object"
-            android:defaultValue="null"/>-->
+
     </fragment>
+
     <fragment
         android:id="@+id/nav_form"
         android:name="com.lmo.fadergsn2.ui.form.FormFragment"

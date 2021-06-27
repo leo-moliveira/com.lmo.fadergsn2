@@ -1,7 +1,9 @@
 package com.lmo.fadergsn2;
 
+import com.google.gson.Gson;
 import com.google.type.DateTime;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -22,6 +24,12 @@ public class Task {
         this.desc = desc;
         this.createdAt = createdAt;
         this.archived = archived;
+    }
+
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     public boolean isArchived() {

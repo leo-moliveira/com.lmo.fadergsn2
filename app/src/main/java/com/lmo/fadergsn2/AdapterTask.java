@@ -2,6 +2,7 @@ package com.lmo.fadergsn2;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +72,9 @@ public class AdapterTask extends BaseAdapter {
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 NavController navController = Navigation.findNavController(activity,R.id.nav_host_fragment_content_main);
-                navController.navigate(R.id.nav_subTask);
+                Bundle args = new Bundle();
+                args.putString("task", taskList.get(position).toString());
+                navController.navigate(R.id.nav_subTask,args);
             }
         });
         return convertView;
