@@ -93,7 +93,7 @@ public class FormFragment extends Fragment {
                 task.put("desc",desc);
                 task.put("createdAt", date);
                 if(collection.equals("subtasks")){
-                    task.put("taskid",mainTask.getId());
+                    task.put("taskId",mainTask.getId());
                     task.put("completed", Boolean.FALSE);
                 }else{
                     task.put("archived",Boolean.FALSE);

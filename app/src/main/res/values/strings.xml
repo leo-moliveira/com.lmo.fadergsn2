@@ -50,4 +50,5 @@
     <string name="noTasks">Unable to find tasks for your user</string>
     <string name="menu_subTasks">Sub Tasks</string>
     <string name="newsubtask">New Sub Task</string>
+    <string name="noSubTasks">Unable to find sub tasks for your task</string>
 </resources>

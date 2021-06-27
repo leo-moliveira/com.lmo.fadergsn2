@@ -1,26 +1,37 @@
 package com.lmo.fadergsn2;
 
+import java.util.Date;
+
 public class SubTask {
     private String id;
     private String taskId;
     private String title;
     private String desc;
-    private boolean archived;
-
+    private Date createdAt;
+    private boolean completed;
+    public SubTask(){}
     public SubTask(String id, String taskId, String title, String desc, boolean archived) {
         this.id = id;
         this.taskId = taskId;
         this.title = title;
         this.desc = desc;
-        this.archived = archived;
+        this.completed = archived;
     }
 
     public boolean isArchived() {
-        return archived;
+        return completed;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public void setArchived(boolean archived) {
-        this.archived = archived;
+        this.completed = archived;
     }
 
     public String getId() {
