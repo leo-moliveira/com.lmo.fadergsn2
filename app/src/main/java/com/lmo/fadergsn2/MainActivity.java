@@ -1,7 +1,10 @@
 package com.lmo.fadergsn2;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -10,9 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -27,12 +33,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.lmo.fadergsn2.databinding.ActivityMainBinding;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import io.grpc.Context;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,18 +68,6 @@ public class MainActivity extends AppCompatActivity {
         navHeaderTitle = findViewById(R.id.nav_header_title);
         navHeaderSubTitle = findViewById(R.id.nav_header_subtitle);
 
-
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                       // .setAction("Action", null).show();
-                NavController navController = Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_content_main);
-                navController.navigate(R.id.nav_form);
-            }
-        });
-
-
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -84,6 +79,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                       // .setAction("Action", null).show();
+                NavController navController = Navigation.findNavController(MainActivity.this,R.id.nav_host_fragment_content_main);
+                Bundle args = new Bundle();
+                args.putString("action","newtask");
+                navController.navigate(R.id.nav_form,args);
+            }
+        });
+
+
+
 
 
     }

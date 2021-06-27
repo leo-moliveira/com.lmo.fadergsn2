@@ -2,11 +2,13 @@ package com.lmo.fadergsn2.ui.form;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,7 @@ public class FormFragment extends Fragment {
     private FragmentFromBinding binding;
 
     private EditText ffetTitle, ffetDesc;
+    private TextView fftwNewTask;
     private Button ffBtnSend;
     private User userData;
 
@@ -47,13 +50,23 @@ public class FormFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_from, container, false);
 
-        EditText ffetTitle = (EditText) view.findViewById(R.id.ffetTitle);
-        EditText ffetDesc = (EditText) view.findViewById(R.id.ffetDesc);
+        ffetTitle = (EditText) view.findViewById(R.id.ffetTitle);
+        ffetDesc = (EditText) view.findViewById(R.id.ffetDesc);
+        fftwNewTask = view.findViewById(R.id.fftwNewTask);
 
         Button ffBtnSend = (Button) view.findViewById(R.id.ffBtnSend);
 
         userData = getUserData(this.getContext());
-
+        Bundle bundleArgs = getArguments();
+        String action = bundleArgs.get("action").toString();
+        String argString = new String();
+        if(bundleArgs.get("task") != null){
+            argString = bundleArgs.get("task").toString();
+        }
+        com.lmo.fadergsn2.Task mainTask = new Gson().fromJson(argString, com.lmo.fadergsn2.Task.class);
+        if(!(action.equals("newtask"))){
+            fftwNewTask.setText(getResources().getString(R.string.newsubtask));
+        }
         ffBtnSend.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -62,18 +75,31 @@ public class FormFragment extends Fragment {
                 String title,desc;
                 title = ffetTitle.getText().toString().trim();
                 desc = ffetDesc.getText().toString().trim();
-
-                DocumentReference doc = base.collection("tasks").document();
+                String collection = new String();
+                switch (action){
+                    case "newtask":
+                        collection = "tasks";
+                        break;
+                    case "newsubtask":
+                        collection = "subtasks";
+                        break;
+                }
+                DocumentReference doc = base.collection(collection).document();
                 Date date = new Date(System.currentTimeMillis());
-                //String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
                 Map<String,Object> task = new HashMap<>();
                 task.put("id",doc.getId());
                 task.put("userId",userData.getId());
                 task.put("title",title);
                 task.put("desc",desc);
                 task.put("createdAt", date);
-                task.put("archived",Boolean.FALSE);
-                base.collection("tasks").add(task).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                if(collection.equals("subtasks")){
+                    task.put("taskid",mainTask.getId());
+                    task.put("completed", Boolean.FALSE);
+                }else{
+                    task.put("archived",Boolean.FALSE);
+                }
+
+                base.collection(collection).add(task).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
                         Toast.makeText(v.getContext(),v.getResources().getString(R.string.taskCreated),Toast.LENGTH_SHORT).show();

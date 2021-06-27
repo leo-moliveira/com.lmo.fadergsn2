@@ -10,11 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.lmo.fadergsn2.MainActivity;
 import com.lmo.fadergsn2.R;
 import com.lmo.fadergsn2.Task;
 import com.lmo.fadergsn2.User;
@@ -41,6 +45,18 @@ public class SubTaskFragment extends Fragment {
         Task task = new Gson().fromJson(argString,Task.class);
 
         fsttvMainTaskTitle.setText(task.getTitle());
+
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main);
+                Bundle argsOut = new Bundle();
+                argsOut.putString("action","newsubtask");
+                argsOut.putString("task",args.get("task").toString());
+                navController.navigate(R.id.nav_form,argsOut);
+            }
+        });
 
         return view;
     }

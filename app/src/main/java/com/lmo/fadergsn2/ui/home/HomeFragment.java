@@ -1,6 +1,8 @@
 package com.lmo.fadergsn2.ui.home;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +13,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.lmo.fadergsn2.AdapterTask;
+import com.lmo.fadergsn2.MainActivity;
 import com.lmo.fadergsn2.R;
 import com.lmo.fadergsn2.Task;
 import com.lmo.fadergsn2.User;
@@ -57,7 +63,7 @@ public class HomeFragment extends Fragment {
         fmlvMainTasks = view.findViewById(R.id.fmlvMainTasks);
         listOfTasks = new ArrayList<>();
 
-            this.userData = FormFragment.getUserData(this.getContext());
+        this.userData = FormFragment.getUserData(this.getContext());
         if ( this.userData != null ){
             this.firebaseFirestore.collection("tasks")
                     .whereEqualTo("userId",userData.getId())
@@ -83,9 +89,20 @@ public class HomeFragment extends Fragment {
                         }
                     });
         }
-
+        if(getActivity().findViewById(R.id.fab) != null ){
+            getActivity().findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment_content_main);
+                    Bundle args = new Bundle();
+                    args.putString("action","newtask");
+                    navController.navigate(R.id.nav_form,args);
+                }
+            });
+        }
         return view;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
